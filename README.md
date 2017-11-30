@@ -8,6 +8,18 @@
 
 ObservableScheduler 最主要的目的就是轻松的帮你在子线程和主线程之间做转换, 项目的思想来自RxJava,代码很有可能也是模仿RxJava,没关系,人家牛我们就得模仿。
 
+##源码分析
+- schedule包中的类
+        MainScheduler 利用主线程的Handler在主线程运行runnable方法 execute为无返回值的调用，submit为有返回值的调用
+        对应的是ExecutorService的execute和submit
+        WorkScheduler 通过ExecutorService线程池运行方法
+- SubscribeManager
+        包装了实现Observer<T>接口的类，对Observer的各种回调进行进一步包装
+- JObservable 其实没什么好讲的比较简单
+
+
+
+
 
 ##Demo:
 ![](https://raw.githubusercontent.com/jiang111/ObservableScheduler/master/art/art.gif)
